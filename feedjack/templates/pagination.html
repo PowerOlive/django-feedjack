@@ -1,18 +1,18 @@
 {% load i18n %}
-<div id="paginate">
-{% if has_previous %}
-<div class="pageitem"><a href="?page={{ previous }}">&lt;&lt;</a></div>
-{% endif %}
-<div class="pageitem">
-  Page {{ page }} of {{ pages }} ({% blocktrans count hits as posts %}{{ posts }} post{% plural %}{{ posts }} posts{% endblocktrans %})
-</div>
-{% if subscription %}
-<div class="pageitem username"><a href="{{ subscription.feed.link }}">{{ subscription.name }}</a></div>
-{% endif %}
-{% if tag %}
-<div class="pageitem tagname">{{ tag.name }}</div>
-{% endif %}
-{% if has_next %}
-<div class="pageitem"><a href="?page={{ next }}">&gt;&gt;</a></div>
-{% endif %}
+<div class="row">
+    <div class="columns large-4 large-centered panel">
+    <ul class="pagination centered">
+        <li class="arrow{% if not has_previous %} unavailable{% endif %}"><a href="?page={{ previous }}">&laquo;</a></li>
+        <li class="current">
+            Page {{ page }} of {{ pages }} ({% blocktrans count hits as posts %}{{ posts }} post{% plural %}{{ posts }} posts{% endblocktrans %})
+            {% if subscription %}
+                <a href="{{ subscription.feed.link }}">{{ subscription.name }}</a>
+            {% endif %}
+            {% if tag %}
+                {{ tag.name }}
+            {% endif %}
+        </li>
+        <li class="arrow{% if not has_next %} unavailable{% endif %}"><a href="?page={{ next }}">&raquo;</a></li>
+    </ul>
+    </div>
 </div>

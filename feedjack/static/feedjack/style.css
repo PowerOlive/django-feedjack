@@ -1,0 +1,49 @@
+body {
+    background-color: lightgrey;
+}
+div.content {
+    background-color: white;
+}
+div.post {
+    margin-top: 2ex;
+    padding: 4ex;
+    border: thin solid lightgrey;
+}
+div.post-meta {
+    text-align: right;
+}
+div.post-meta a {
+    color: darkblue !important;
+}
+div.sidebar a {
+    color: white;
+}
+div.sidebar fieldset legend {
+    background-color: #547852;
+    color: white;
+    padding: 2px 4px;
+}
+div.sidebar fieldset {
+    border-color: black;
+}
+.nobre {
+    white-space: nowrap;
+}
+div.post-title a {
+    color: black;
+    font-weight: bold;
+}
+#paginate {
+    border: thin dotted black;
+    padding: 5px;
+}
+#paginate div.pageitem {
+    display: inline;
+}
+div.sidebar{
+    background-color: #83BA80;
+}
+div.header {
+    background-color: #547852;
+    color: white;
+}
