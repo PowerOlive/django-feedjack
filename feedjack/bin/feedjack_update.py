@@ -405,6 +405,15 @@ class RobotsTxtWatcherMixin(object):
 from django.utils.http import http_date
 
 JOB_DENY_ROBOTS, JOB_NOTFOUND, JOB_SERVERERROR, JOB_UNMODIFIED, JOB_SUCCESS_NOTHINGNEW, JOB_SUCCESS = range(6)
+JOB_RESULTS = {
+        "JOB_DENY_ROBOTS": JOB_DENY_ROBOTS,
+        "JOB_NOTFOUND": JOB_NOTFOUND,
+        "JOB_SERVERERROR": JOB_SERVERERROR,
+        "JOB_UNMODIFIED": JOB_UNMODIFIED,
+        "JOB_SUCCESS_NOTHINGNEW": JOB_SUCCESS_NOTHINGNEW,
+        "JOB_SUCCESS": JOB_SUCCESS
+}
+JOB_RESULTS_REVERSE = dict(map(lambda x: reversed(x), JOB_RESULTS.items()))
 
 class BaseDispatcher(RobotsTxtWatcherMixin, HttpGetter):
 
@@ -416,7 +425,7 @@ class BaseDispatcher(RobotsTxtWatcherMixin, HttpGetter):
         self.run_job(feed_obj)
 
     def job_result(self, feed_obj, result):
-        print feed_obj, "was fetched with result", result
+        print feed_obj, "was fetched with result", JOB_RESULTS_REVERSE.get(result)
 
     def run_job(self, feed_obj):
         if not self.can_fetch(feed_obj.feed_url):
