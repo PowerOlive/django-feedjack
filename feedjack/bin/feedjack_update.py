@@ -360,8 +360,12 @@ class HttpGetter(object):
         if not 'user-agent' in hdrs:
             hdrs['user-agent'] = USER_AGENT
         print "http_get:", url
-        r = requests.get(url, headers=hdrs)
-        return (r.status_code, r.headers, r.text)
+        try:
+            r = requests.get(url, headers=hdrs)
+            return (r.status_code, r.headers, r.text)
+        except requests.exceptions.ConnectionError, e:
+            # happens for example, when
+            return (500, None, "requests.exceptions.ConnectionError getting %s"%url)
 
 import robotparser
 import urlparse
